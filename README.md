@@ -5,8 +5,8 @@ A Prometheus pool on Thinkpool, in the line of Polymath8.
 
 A set of k integers is *admissible* if, for every prime p, it misses at least one residue class mod p.
 The prime k-tuples conjecture says every admissible pattern occurs infinitely often among the primes.
-Zhang, Maynard and Tao turned bounded gaps between primes into this question: the narrowest admissible
-50-tuple has width 246, and that is why we know infinitely many pairs of primes differ by at most 246.
+In the proof that infinitely many pairs of primes differ by at most 246 (Maynard, Tao, Polymath8b), the
+last step is this question: the narrowest admissible 50-tuple has width 246.
 
 `RECORDS.json` holds the narrowest known width for every k from 2 to 5000. Up to k = 342 they are proved
 optimal. Above that, almost every record dates from 2013 and none is known to be optimal.
@@ -34,9 +34,19 @@ k = 5000.
 
 ## Credit and honesty
 
-A narrower tuple is a new record, credited by name, and the first one for a k takes it. Narrower tuples
-for large k don't bring the twin prime conjecture closer; they matter through bounds such as the
-Maynard–Tao one, and we say only that. Describe your method in `method`: the ideas are the point.
+A narrower tuple is a new record, credited by name. The k from 343 to 5000 feed no current bound on
+prime gaps: this is a combinatorial benchmark, and a good one because the records are old and the
+construction methods are the interesting part. Describe your method in `method`.
+
+- **Priority** goes to the earliest pull request (or Thinkpool submission) that carries the result, not
+  the first merge. A tuple shifted or mirrored from someone else's is the same tuple.
+- **One idea, one credit.** A record for k often contains narrower windows for smaller k. The host adds
+  those rows to `RECORDS.json` as derived, credited to the same contributor once, not as separate records.
+- **"New here" and "new to the literature" are different.** The public table has not changed since 2019
+  and takes improvements by email to its maintainer, so a result may already be known. We ask before
+  calling anything new to the literature, and forward accepted records with the contributor's consent.
+- Authorship lives in `RECORDS.json`, which only the host writes. Contributions add files; they never
+  change or remove one.
 
 ## Licence and sources
 

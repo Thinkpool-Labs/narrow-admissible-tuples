@@ -15,12 +15,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "checker"))
 
+from hygiene import problems  # noqa: E402
 from verify import check  # noqa: E402
 
-MAX_FILES = 200
+MAX_FILES = 6000
 
 
 def main() -> int:
+    bad = problems(ROOT, "tuples")
+    if bad:
+        print(json.dumps({"summary": "the tree is not the pool\'s", "problems": bad[:20]}))
+        return 1
     recs = {r["k"]: r["width"] for r in json.loads((ROOT / "RECORDS.json").read_text(encoding="utf-8"))["records"]}
     files = sorted((ROOT / "tuples").glob("*.json"))
     if len(files) > MAX_FILES:
@@ -29,6 +34,8 @@ def main() -> int:
     ok, new = True, []
     for f in files:
         try:
+            if f.is_symlink() or not f.is_file():
+                raise ValueError("not a regular file")
             out = check(json.loads(f.read_text(encoding="utf-8")))
         except Exception as e:
             out = {"verdict": "MALFORMED", "reason": str(e)}

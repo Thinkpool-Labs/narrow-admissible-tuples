@@ -5,18 +5,37 @@
   "checks": [
     {
       "name": "tuples",
-      "description": "Every tuple is admissible, and one is narrower than RECORDS.json for its k.",
-      "image": "python:3.12-slim",
-      "setup": { "command": "pip install --no-cache-dir --target /work/.deps -r requirements.txt", "network": true, "timeout_s": 600 },
-      "command": "python checker/check_all.py",
+      "description": "Every tuple is admissible, and one is narrower than RECORDS.json for its k. Runs in docker/Dockerfile's image, built once by the host.",
+      "image": "thinkpool-prometheus-py:1",
+      "command": "python -I checker/check_all.py",
       "mode": "fix",
       "timeout_s": 600,
-      "protected_paths": ["checker/**", "RECORDS.json", "requirements.txt", "tests/**"],
-      "pass_codes": [0],
-      "env": { "PYTHONPATH": "/work/.deps" },
+      "protected_paths": [
+        "checker/**",
+        "tests/**",
+        "baselines/**",
+        "docker/**",
+        ".github/**",
+        ".thinkpool/**",
+        "RECORDS.json",
+        "requirements.txt",
+        ".deps/**",
+        "**/*.py",
+        "**/*.pth",
+        ".gitattributes"
+      ],
+      "pass_codes": [
+        0
+      ],
       "network": false,
       "share_output": true,
-      "limits": { "memory_mb": 2048, "cpus": 2, "pids": 256, "output_kb": 256, "tmp_mb": 512 }
+      "limits": {
+        "memory_mb": 2048,
+        "cpus": 2,
+        "pids": 256,
+        "output_kb": 256,
+        "tmp_mb": 512
+      }
     }
   ]
 }
