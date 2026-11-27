@@ -1,0 +1,17 @@
+{
+ "k": 10,
+ "tuple": [
+  11,
+  13,
+  17,
+  19,
+  23,
+  29,
+  31,
+  37,
+  41,
+  43
+ ],
+ "author": "seed",
+ "note": "Ten primes above 10: admissible because no prime p <= 10 divides any of them, so 0 mod p is always missed. Width 32, which is optimal for k = 10."
+}

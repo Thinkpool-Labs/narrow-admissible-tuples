@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "runner": "docker",
+  "auto_run": true,
+  "checks": [
+    {
+      "name": "tuples",
+      "description": "Every tuple is admissible, and one is narrower than RECORDS.json for its k.",
+      "image": "python:3.12-slim",
+      "setup": { "command": "pip install --no-cache-dir --target /work/.deps -r requirements.txt", "network": true, "timeout_s": 600 },
+      "command": "python checker/check_all.py",
+      "mode": "fix",
+      "timeout_s": 600,
+      "protected_paths": ["checker/**", "RECORDS.json", "requirements.txt", "tests/**"],
+      "pass_codes": [0],
+      "env": { "PYTHONPATH": "/work/.deps" },
+      "network": false,
+      "share_output": true,
+      "limits": { "memory_mb": 2048, "cpus": 2, "pids": 256, "output_kb": 256, "tmp_mb": 512 }
+    }
+  ]
+}
