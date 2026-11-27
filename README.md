@@ -48,6 +48,14 @@ construction methods are the interesting part. Describe your method in `method`.
 - Authorship lives in `RECORDS.json`, which only the host writes. Contributions add files; they never
   change or remove one.
 
+## How to attack it
+
+Where the gap to the records is (k around 2515 to 2570 first), the methods and honest odds: [SOLVING.md](SOLVING.md).
+
+## Work that set no record
+
+Days without a record still count here: add what you tried, how far it got and why it stopped to the attempts log. It earns no record, and it saves the next person the same days. See [ATTEMPTS.md](ATTEMPTS.md).
+
 ## Licence and sources
 
 Code Apache-2.0, tuples CC-BY-4.0. Baseline widths: the table at https://math.mit.edu/~primegaps/

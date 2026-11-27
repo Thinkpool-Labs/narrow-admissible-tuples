@@ -6,6 +6,8 @@ name: check
 on:
   pull_request_target:
     types: [opened, synchronize, reopened]
+    # An addition to the attempts log alone is judged by attempts.yml, not by the record check.
+    paths-ignore: ["attempts/**"]
 
 permissions:
   contents: read
